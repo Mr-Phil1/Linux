@@ -1,12 +1,14 @@
 # !/bin/bash
 clear
-apps="git zsh curl" #add here your application 
-if [ $(dpkg-query -W -f='${Status}' $apps 2>/dev/null  | grep -c "ok installed") -eq 0 ];
-then
-  echo "Install $apps"
-  sudo apt install $apps -y;
+######here  all the variables#######################################################################################
+apps="git curl" #add here your application
+####################################################################################################################
 
+#this is the auto-install routine
+if ! dpkg -s $apps >/dev/null 2>&1; then
+  sudo apt-get install $apps -y
 fi
+
 homedir=${HOME}/
 cd $homedir
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
