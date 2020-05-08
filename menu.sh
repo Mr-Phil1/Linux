@@ -12,7 +12,7 @@ then
   sudo apt install $apps -y;
 fi
 
-#dont touch this#
+###dialog menu##
 cmd=(dialog --separate-output --checklist "Select options:" 22 75 13)
 options=(
     1 "System Update" on
@@ -31,11 +31,11 @@ do
           clear
             ;;
         2)
-          echo "Oh-my-ZSH"
+          echo "Install Oh-my-ZSH"
     		  	sh -c "$(curl -fsSL $ohmyzsh)"
             ;;
         3)
-          echo "Neofetch"
+          echo "Install Neofetch"
     		  	sudo apt install neofetch -y
             ;;
         4)
@@ -44,7 +44,7 @@ do
             sudo rm -r ${HOME}/.oh-my-zsh
             ;;
         5)
-          echo "conf"
+          echo "Add my .zshrc conf"
             sh -c "$(curl -fsSL $zshconfig)"
           ;;
 
