@@ -1,5 +1,4 @@
 #!/bin/bash
-git fetch
 ######here  all the variables#######################################################################################
 apps="git curl dialog" #add here your application
 ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh" #path to my zsh install script
@@ -51,4 +50,3 @@ do
 
     esac
 done
-#hi 
