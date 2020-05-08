@@ -6,14 +6,12 @@ zshconfig="" #path to my .zshrc config
 ####################################################################################################################
 
 #this is the auto-install routine
-if [ $(dpkg-query -W -f='${Status}' $apps 2>/dev/null  | grep -c "ok installed") -eq 0 ];
-then
-  echo "Install $apps"
-  sudo apt install $apps -y;
+if ! dpkg -s $apps >/dev/null 2>&1; then
+  sudo apt-get install $apps -y
 fi
 
 ###dialog menu##
-cmd=(dialog --separate-output --checklist "Select options:" 22 75 13)
+cmd=(dialog  --radiolist "Select options:" 22 75 13)
 options=(
     1 "System Update" on
     2 "Install Oh-my-Zsh" off
@@ -28,21 +26,21 @@ do
         1)
           echo "sys update"
       			sudo apt-get update -y && sudo apt-get upgrade -y
-          clear
-            ;;
+            clear
+          ;;
         2)
           echo "Install Oh-my-ZSH"
     		  	sh -c "$(curl -fsSL $ohmyzsh)"
-            ;;
+          ;;
         3)
           echo "Install Neofetch"
     		  	sudo apt install neofetch -y
-            ;;
+          ;;
         4)
           echo "Remove Zsh + Oh-my-Zsh"
             sudo apt purge zsh
             sudo rm -r ${HOME}/.oh-my-zsh
-            ;;
+          ;;
         5)
           echo "Add my .zshrc conf"
             sh -c "$(curl -fsSL $zshconfig)"
