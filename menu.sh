@@ -11,7 +11,7 @@ if ! dpkg -s $apps >/dev/null 2>&1; then
 fi
 
 ###dialog menu##
-cmd=(dialog  --radiolist "Select options:" 22 75 13)
+cmd=(dialog --separate-output --checklist "Select options:" 22 75 13)
 options=(
     1 "System Update" on
     2 "Install Oh-my-Zsh" off
