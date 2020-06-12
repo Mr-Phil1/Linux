@@ -1,4 +1,15 @@
 #!/bin/bash
+
+######here  all the variables#######################################################################################
+apps="git curl dialog" #add here your application
+ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh" #path to my zsh install script
+zshconfig="" #path to my .zshrc config
+####################################################################################################################
+
+#this is the auto-install routine
+if ! dpkg -s $apps >/dev/null 2>&1; then
+  sudo apt-get install $apps -y
+fi
 # utilitymenu.sh - A sample shell script to display menus on screen
 # Store menu options selected by the user
 INPUT=/tmp/menu.sh.$$
@@ -19,7 +30,7 @@ trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 #  $3 -> set msgbox title
 #
 function display_output(){
-	local h=${1-20}			# box height default 10
+	local h=${1-25}			# box height default 10
 	local w=${2-41} 		# box width default 41
 	local t=${3-Output} 	# box title
 	dialog --backtitle "Linux Shell Script Tutorial" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
@@ -27,25 +38,36 @@ function display_output(){
 #
 # Purpose - display current system date & time
 #
-function show_date(){
-  clear
-	sudo reboot now
-}
-#
-# Purpose - display a calendar
-#
-function show_calendar(){
-	sudo mv /home/pi/.config/lxsession/LXDE-pi/autostart /home/pi/.config/lxsession/LXDE-pi/old/autostart_`date +"%d-%m-%Y_%H.%M"`.old
-  sudo rm /home/pi/.config/lxsession/LXDE-pi/autostart
+function show_update() {
+    echo "System update"
+    sudo apt-get update -y && sudo apt-get upgrade -y
+    clear
 }
 
-function show_editor() {
-  sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
+function show_zsh() {
+      echo "Install Oh-my-ZSH"
+      sh -c "$(curl -fsSL $ohmyzsh)"
 }
 
-#function show_old() {
-#    ls /home/pi/.config/lxsession/LXDE-pi/old
-#}
+function show_neofetch() {
+    echo "Install Neofetch"
+    sudo sudo apt install neofetch -y
+}
+
+function show_remove() {
+      sudo apt purge zsh
+      sudo rm -r ${HOME}/.oh-my-zsh
+}
+
+function show_config() {
+  echo "show .zshrc"
+  cat  ${HOME}/.zshrc
+}
+
+function show_edit() {
+    echo "show .zshrc"
+    nano ${HOME}/.zshrc
+}
 #
 # set infinite loop
 #
@@ -59,10 +81,12 @@ dialog --clear  --help-button --backtitle "Linux Shell Script Tutorial" \
 letter of the choice as a hot key, or the \n\
 number keys 1-9 to choose an option.\n\
 Choose the TASK" 15 50 4 \
-Reboot "Reboot the system" \
-Remove "Remove autostart" \
-Editor "Edit the autostart" \
-#Old "View the old version"
+Update "Reboot the system" \
+Oh-My-ZSH "Remove autostart" \
+Neofetch "Edit the autostart" \
+Remove "View the old version" \
+Config "Get my .zshrc Config" \
+Edit "Edit my .zshrc Config"
 Exit "Exit to the shell" 2>"${INPUT}"
 
 menuitem=$(<"${INPUT}")
@@ -70,10 +94,12 @@ menuitem=$(<"${INPUT}")
 
 # make decsion
 case $menuitem in
-	Reboot) show_date;;
-	Remove) show_calendar;;
-	Editor) show_editor;;
-#  Old) show_old;;
+	Update) show_update;;
+	Oh-My-ZSH) show_zsh;;
+	Neofetch) show_neofetch;;
+  Remove) show_remove;;
+  Config) show_config;;
+  Edit) show_edit;;
 	Exit) echo "Bye"; break;;
 esac
 
