@@ -3,7 +3,7 @@
 ######here  all the variables#######################################################################################
 apps="git curl dialog" #add here your application
 ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh" #path to my zsh install script
-zshconfig="" #path to my .zshrc config
+zshconfig="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/my-alias.txt" #path to my .zshrc config
 ####################################################################################################################
 
 #this is the auto-install routine
@@ -30,7 +30,7 @@ trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 #  $3 -> set msgbox title
 #
 function display_output(){
-	local h=${1-25}			# box height default 10
+	local h=${1-30}			# box height default 10
 	local w=${2-41} 		# box width default 41
 	local t=${3-Output} 	# box title
 	dialog --backtitle "Linux Shell Script Tutorial" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
@@ -60,8 +60,8 @@ function show_remove() {
 }
 
 function show_config() {
-  echo "show .zshrc"
-  cat  ${HOME}/.zshrc
+  echo "get .zshrc"
+  echo ${zshconfig} >> ${HOME}/.zshrc
 }
 
 function show_edit() {
