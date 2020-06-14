@@ -1,7 +1,7 @@
 # !/bin/bash
 clear
 ######here  all the variables#######################################################################################
-apps="git curl" #add here your application
+apps="git curl zsh" #add here your application
 ####################################################################################################################
 
 #this is the auto-install routine
