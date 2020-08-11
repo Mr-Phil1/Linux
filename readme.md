@@ -17,8 +17,8 @@ For easy Install my must have Terminal Programms
 * `add my .zshrc config`
 * `Remove ZSH + ohmyzsh`
 * `Nano Editor for .zshrc + neofetch`
-___
-#### Link to the used Repos:
+---
+#### __Link to the used Repos:__
 1. [ohmyzsh](https://github.com/dylanaraps/neofetch)
 2. [Neofetch](https://github.com/ohmyzsh/ohmyzsh)
 3. [Youtube-DL](https://github.com/ytdl-org/youtube-dl)
