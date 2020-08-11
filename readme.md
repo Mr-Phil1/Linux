@@ -20,7 +20,7 @@ For easy Install my must have Terminal Programms
 * `system update`
 * `add my .zshrc config`
 * `Remove ZSH + ohmyzsh`
-* `Nano Editor for .zshrc + neofetch`
+* `Nano Editor for the .zshrc + neofetch config`
 ---
 #### __Link to the used Repos:__
 * [ohmyzsh](https://github.com/dylanaraps/neofetch)
