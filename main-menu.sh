@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-######here  all the variables#######################################################################################
+######here all the variables#######################################################################################
 apps="git curl dialog" #add here your application
 ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh" #path to my zsh install script
 zshconfig="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/zsh-conf.sh" #path to my .zshrc config
