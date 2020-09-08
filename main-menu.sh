@@ -3,8 +3,9 @@ clear
 ######here  all the variables#######################################################################################
 apps="git curl dialog" #add here your application
 ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh" #path to my zsh install script
-zshconfig="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/conf.sh" #path to my .zshrc config
-ydl="https://yt-dl.org/downloads/latest/youtube-dl" #path to the youtube-dl site
+zshconfig="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/zsh-conf.sh" #path to my .zshrc config
+ydl="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-ydl.sh" #path to the youtube-dl install Script
+dlna="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-dlna.sh" #path to my my minidlna install script
 ####################################################################################################################
 
 #this is the auto-install routine
@@ -61,7 +62,11 @@ function show_ydl() {
   if ! dpkg -s python ffmpeg>/dev/null 2>&1; then
     sudo apt-get install python ffmpeg -y
   fi
-  sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/Mr-Phil1/Linux/master/ydl.sh)"
+  sudo sh -c "$(curl -fsSL ${ydl})"
+}
+
+function show_dlna() {
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-dlna.sh)"
 }
 
 function show_neo(){
@@ -95,6 +100,7 @@ ZSH "Install ZSH + Oh-My-ZSH" \
 Neofetch "Install Neofetch" \
 Remove "Remove ZSH + Oh-My-ZSH" \
 Youtube-dl "Install YT-dl (python + ffmpeg)" \
+miniDLNA "Install the miniDLNA Service" \
 Add "Add my .zshrc config" \
 Editor "Edit the .zshrc" \
 Neo "Edit the neofetch config" \
@@ -110,6 +116,7 @@ case $menuitem in
   Neofetch) show_neofetch;;
 	Remove) show_remove;;
 	Youtube-dl) show_ydl;;
+  miniDLNA) show_dlna;;
 	Add) show_config;;
 	Editor) show_editor;;
 	Neo) show_neo;;
@@ -119,5 +126,5 @@ esac
 done
 
 # if temp files found, delete em
-[ -f $OUTPUT ] && rm $OUTPUT
-[ -f $INPUT ] && rm $INPUT
+#[ -f $OUTPUT ] && rm $OUTPUT
+#[ -f $INPUT ] && rm $INPUT
