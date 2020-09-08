@@ -1,9 +1,0 @@
-neofetch
-
-#My Alias
-alias la="ls -la"
-alias cls="clear"
-alias git-dir="cd ${HOME}/git"
-alias rm-dir="sudo rm -r"
-alias menu="${HOME}/git/Linux/menu.sh"
-alias home="cd ${HOME}"
