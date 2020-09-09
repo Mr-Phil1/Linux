@@ -70,7 +70,7 @@ case $menuitem in
   Install) menu_install;;
   Edit) menu_edit;;
   Rescan) menu_rescan;;
-	Exit)   break;;
+	Exit)  clear && break;;
 esac
 
 done

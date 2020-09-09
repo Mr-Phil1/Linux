@@ -66,7 +66,7 @@ function show_ydl() {
 }
 
 function show_dlna() {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-dlna.sh)"
+  ./install-dlna.sh
 }
 
 function show_neo(){
@@ -104,7 +104,7 @@ miniDLNA "Install the miniDLNA Service" \
 Add "Add my .zshrc config" \
 Editor "Edit the .zshrc" \
 Neo "Edit the neofetch config" \
-Exit "Exit to the shell" 2>"${INPUT}"
+Close "Exit to the shell" 2>"${INPUT}"
 
 menuitem=$(<"${INPUT}")
 
@@ -120,11 +120,11 @@ case $menuitem in
 	Add) show_config;;
 	Editor) show_editor;;
 	Neo) show_neo;;
-	Exit)   break;;
+	Close)  clear && break;;
 esac
 
 done
 
 # if temp files found, delete em
-#[ -f $OUTPUT ] && rm $OUTPUT
-#[ -f $INPUT ] && rm $INPUT
+[ -f $OUTPUT ] && rm $OUTPUT
+[ -f $INPUT ] && rm $INPUT
