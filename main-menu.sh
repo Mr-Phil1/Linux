@@ -45,7 +45,8 @@ function show_zsh() {
 
 function show_update(){
   clear
-  sudo apt-get update -y && sudo apt-get upgrade -y
+  echo "Es werden nun die aktuellsten Updates geholt und installiert."
+  sudo apt-get update -y > /dev/null ; sudo apt-get upgrade -y > /dev/null
   clear
 }
 
@@ -120,7 +121,7 @@ case $menuitem in
 	Add) show_config;;
 	Editor) show_editor;;
 	Neo) show_neo;;
-	Close)  clear && break;;
+	Close) clear ; echo "Auf Wiedersehen" ; break;;
 esac
 
 done
