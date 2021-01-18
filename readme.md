@@ -23,6 +23,6 @@ For easy Install my must have Terminal Programms
 * `Nano Editor for the .zshrc + neofetch config`
 ---
 #### __Link to the used Repos:__
-* [ohmyzsh](https://github.com/dylanaraps/neofetch)
-* [Neofetch](https://github.com/ohmyzsh/ohmyzsh)
+* [Neofetch](https://github.com/dylanaraps/neofetch)
+* [Oh-My-ZSH](https://github.com/ohmyzsh/ohmyzsh)
 * [Youtube-DL](https://github.com/ytdl-org/youtube-dl)
