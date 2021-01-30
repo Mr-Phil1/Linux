@@ -3,7 +3,7 @@
 ![Menu](/pic/menu.png)
 A sneek Peak of the Menu.
 
-## The Reason why I write it.
+## The Reason why write it.
 For easy Install my must have Terminal Programms
 
 
