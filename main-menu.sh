@@ -46,7 +46,10 @@ function show_zsh() {
 function show_update(){
   clear
   echo "Es werden nun die aktuellsten Updates geholt und installiert."
-  sudo apt-get update -y > /dev/null ; sudo apt-get upgrade -y > /dev/null
+  sudo apt-get update -y > /dev/null && \
+  echo "Hier ist einen Liste der zu updateten Programmen" && \
+  sudo apt list --upgradable && \
+  sudo apt-get upgrade -y > /dev/null
   clear
 }
 
