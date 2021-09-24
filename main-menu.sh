@@ -49,9 +49,6 @@ function show_update() {
   sudo apt-get update -y >/dev/null &&
     echo "Hier ist einen Liste der zu updateten Programmen" &&
     sudo apt list --upgradable &&
-    for i in {0..5}; do
-      print "-"
-    done
   sudo apt-get upgrade -y >/dev/null
   clear
 }
