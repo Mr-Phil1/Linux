@@ -50,6 +50,7 @@ function show_update() {
     echo "Hier ist einen Liste der zu updateten Programmen" &&
     sudo apt list --upgradable &&
   sudo apt-get upgrade -y >/dev/null
+  echo "Die Update sind nun fertig gestellt!"
   clear
 }
 
