@@ -1,4 +1,5 @@
 #! /bin/bash
+echo "clear" >>${HOME}/.zshrc
 echo "neofetch" >>${HOME}/.zshrc
 echo "" >>${HOME}/.zshrc
 echo "#My Alias" >>${HOME}/.zshrc
