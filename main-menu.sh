@@ -6,6 +6,8 @@ ohmyzsh="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-zsh.sh"
 zshconfig="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/zsh-conf.sh"  #path to my .zshrc config
 ydl="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-ydl.sh"     #path to the youtube-dl install Script
 dlna="https://raw.githubusercontent.com/Mr-Phil1/Linux/master/install-dlna.sh"   #path to my my minidlna install script
+h=${20}                                                                          # box height default 10
+w=${50}                                                                          # box width default 41
 ####################################################################################################################
 
 #this is the auto-install routine
@@ -44,14 +46,15 @@ function show_zsh() {
 }
 
 function show_update() {
-  clear
-  echo "Es werden nun die aktuellsten Updates geholt und installiert."
-  sudo apt-get update -y >/dev/null &&
-    echo "Hier ist einen Liste der zu updateten Programmen" &&
-    sudo apt list --upgradable &&
-  sudo apt-get upgrade -y >/dev/null
-  echo "Die Update sind nun fertig gestellt!"
-  clear
+  clear &&
+    echo "Es werden nun die aktuellsten Updates geholt und installiert." &&
+    sudo apt-get update -y >/dev/null &&
+    # echo "Hier ist einen Liste der zu updateten Programmen" &&
+    dialog --prgbox "Hier ist einen Liste der zu updateten Programmen" "sudo apt list --upgradable" ${h} ${w} &&
+    # sudo apt list --upgradable &&
+    sudo apt-get upgrade -y >/dev/null &&
+    echo "Die Update sind nun fertig gestellt!" &&
+    clear
 }
 
 function show_neofetch() {
@@ -93,7 +96,7 @@ function show_editor() {
 while true; do
 
   ### display main menu ###
-  dialog --clear --help-button --backtitle "Mr. Phil Install Menu" \
+  dialog --clear --backtitle "Mr. Phil Install Menu" \
     --title "[ M A I N - M E N U ]" \
     --menu "You can use the UP/DOWN arrow keys, the first \n\
 letter of the choice as a hot key.
